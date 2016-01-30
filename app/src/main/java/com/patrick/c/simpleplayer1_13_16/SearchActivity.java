@@ -1,6 +1,7 @@
 package com.patrick.c.simpleplayer1_13_16;
 
 import android.app.*;
+import android.app.Activity;
 import android.content.*;
 import android.graphics.*;
 import android.net.*;
@@ -22,6 +23,7 @@ import com.google.android.gms.common.*;
 import com.google.android.gms.common.api.*;
 import com.google.android.gms.common.api.GoogleApiClient.*;
 //import com.google.android.gms.games.video.*;
+import com.google.android.youtube.player.*;
 import com.google.api.services.youtube.model.*;
 import com.squareup.picasso.*;
 
@@ -44,6 +46,7 @@ public class SearchActivity extends AppCompatActivity implements OnConnectionFai
      private LinearLayout ll;
      private VideoView vv;
      private Video mVideo;
+     public static final String KEY_VIDEO_ID = "VIDEO_ID";
 
 
 
@@ -77,6 +80,7 @@ public class SearchActivity extends AppCompatActivity implements OnConnectionFai
         videosFound = (ListView) findViewById(R.id.videos_found);
 
         handler = new Handler();
+       // searchOnYoutube("hello");
        // ll = new LinearLayout(this);
        // vv = new VideoView(this);
 
@@ -201,7 +205,7 @@ public class SearchActivity extends AppCompatActivity implements OnConnectionFai
                 VideoItem searchResult = searchResults.get(position);
 
                 Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
-                title.setText(searchResult.getTitle());
+              title.setText(searchResult.getTitle());
                 description.setText(searchResult.getDescription());
                 return convertView;
             }
@@ -236,8 +240,11 @@ public class SearchActivity extends AppCompatActivity implements OnConnectionFai
 
                 //Intent i = new Intent(this, PopUpService.class );
                 //startService(i);
+
+               // Intent intent1 = YouTubeStandalonePlayer.createVideoIntent((Activity) getApplicationContext(), YoutubeConnector.KEY, "VIDEO_ID");
+               // startActivity(intent1);
                 Intent intent = new Intent(getApplicationContext(), PlayerActivity.class);
-                intent.putExtra(PlayerActivity.KEY_VIDEO_ID,searchResults.get(position).getId());
+                intent.putExtra("VIDEO_ID", searchResults.get(position).getId());
                 startActivity(intent);
                 Log.d("test","clicked");
 

@@ -6,10 +6,19 @@
             android:label="@string/app_name"
             android:hint="Search Video"
             android:searchSuggestAuthority="com.google.signin"
+            android:voiceSearchMode="showVoiceSearchButton"
+            android:searchSuggestIntentAction="android.intent.action.VIEW"
+
 
 
 
 
     >
+
+    <actionkey
+
+        android:queryActionMsg="string"
+        android:suggestActionMsg="string"
+        android:suggestActionMsgColumn="string" />
 
 </Searchable>

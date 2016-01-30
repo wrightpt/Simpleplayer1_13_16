@@ -41,6 +41,8 @@
         </activity>
 
         <activity android:name="com.patrick.c.simpleplayer1_13_16.PlayerActivity"
+
+                  android:theme="@style/NewDialog"
             />
 
         <activity
